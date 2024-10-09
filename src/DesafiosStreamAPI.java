@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 public class DesafiosStreamAPI {
@@ -12,6 +13,8 @@ public class DesafiosStreamAPI {
         listaNumeros.removerNumerosImpares(listaNumeros.numeros); //Desafio 4
         listaNumeros.somaNumerosMaiores(listaNumeros.numeros); //Desafio 5
         listaNumeros.numeroMaioresQueValorDeterminado(listaNumeros.numeros); //Desafio 6
+        listaNumeros.encontrarSegundoNumeroMaiorLista(listaNumeros.numeros); //Desafio 7
+        listaNumeros.imprimirListaSemNumerosRepetidos(listaNumeros.numeros); //Desafio 9
 
     }
 
@@ -31,7 +34,7 @@ public class DesafiosStreamAPI {
     //Desafio 3 - Verifique se todos os números da lista são positivos:
     public void imprimirNumerosPositivos(List<Integer> numeros){
         List<Integer> numerosPositivos = numeros.stream().filter(numero -> numero > 0).toList();
-        System.out.println("Lista apenas com os numeros positivos " + numerosPositivos);
+        System.out.println("Lista apenas com os numeros positivos: " + numerosPositivos);
     }
 
     //Desafio 4 - Remova todos os valores ímpares:
@@ -53,6 +56,30 @@ public class DesafiosStreamAPI {
         System.out.println("Lista contém quais valores maiores que " + numeroDeterminado + " :" + numeroMaioresQueValor);
     }
 
-    
+     //Desafio 7 - Encontrar o segundo número maior da lista:
+     public void encontrarSegundoNumeroMaiorLista(List<Integer> numeros) throws Exception {
+        if (numeros.size() > 2) {
+            List<Integer> listaNumerosOrdenados = numeros.stream().distinct().sorted(Comparator.reverseOrder()).toList();
+            System.out.println("o segundo numero maior da Lista é : " + listaNumerosOrdenados.get(1)); 
+        } else throw new Exception("A lista deve conter pelo menos dois números.");      
+    }
+
+    //Desafio 8 - Somar os dígitos de todos os números da lista:
+    public void somarDigitosNumerosLista(List<Integer> numeros){
+
+    }
+
+    //Desafio 9 - Verificar se todos os números da lista são distintos (não se repetem):
+    public void imprimirListaSemNumerosRepetidos(List<Integer> numeros){
+        List<Integer> listaSemNumerosRepetidos = numeros.stream().distinct().toList();
+        System.out.println("Lista sem numeros repetidos :" + listaSemNumerosRepetidos);
+    }
+
+    //Desafio 10 - Agrupe os valores ímpares múltiplos de 3 ou de 5:
+    public void agruparValoresImparesMultiplosNumerosSelecionados(List<Integer> numeros){
+       int primeiroMultiplo = 3;
+       int segundoMultiplo = 5;
+
+    }
 
 }
