@@ -14,7 +14,10 @@ public class DesafiosStreamAPI {
         listaNumeros.somaNumerosMaiores(listaNumeros.numeros); //Desafio 5
         listaNumeros.numeroMaioresQueValorDeterminado(listaNumeros.numeros); //Desafio 6
         listaNumeros.encontrarSegundoNumeroMaiorLista(listaNumeros.numeros); //Desafio 7
+        listaNumeros.somarDigitosNumerosLista(listaNumeros.numeros); //Desafio 8
         listaNumeros.imprimirListaSemNumerosRepetidos(listaNumeros.numeros); //Desafio 9
+        listaNumeros.agruparValoresImparesMultiplosNumerosSelecionados(listaNumeros.numeros); //Desafio 10
+
 
     }
 
@@ -66,7 +69,8 @@ public class DesafiosStreamAPI {
 
     //Desafio 8 - Somar os dígitos de todos os números da lista:
     public void somarDigitosNumerosLista(List<Integer> numeros){
-
+        int somaDigitos = numeros.stream().map(numero -> String.valueOf(numero)).flatMapToInt(numero -> numero.chars()).map(Character::getNumericValue).sum();
+        System.out.println("A soma dos dígitos da lista é: " + somaDigitos);
     }
 
     //Desafio 9 - Verificar se todos os números da lista são distintos (não se repetem):
@@ -79,7 +83,8 @@ public class DesafiosStreamAPI {
     public void agruparValoresImparesMultiplosNumerosSelecionados(List<Integer> numeros){
        int primeiroMultiplo = 3;
        int segundoMultiplo = 5;
-
+       int somaValoresImparesMultiplosNumerosSelecionados = numeros.stream().filter(numero -> numero % primeiroMultiplo == 0 || numero % segundoMultiplo == 0).mapToInt(Integer::intValue).sum();
+       System.out.println("Soma dos numeros que são multiplicos de " + primeiroMultiplo + " e " + segundoMultiplo + " é: " + somaValoresImparesMultiplosNumerosSelecionados);
     }
 
 }
